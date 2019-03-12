@@ -1,1 +1,37 @@
 @import '~bootstrap/scss/bootstrap';
+
+
+
+body {
+  background-color: black;
+  //font-size: 16px;
+}
+p{
+  font-family: VCR osd mono;
+  color: white;
+}
+form {
+  width: 25.5%;
+  height: 10%;
+  padding: 20px;
+  margin-left: 300px;
+
+
+
+
+
+}
+
+.user-message {
+margin-right: 350px;
+
+
+
+}
+.forms {
+  width: 42%;
+  float: right;
+  clear: both;
+
+
+}

@@ -12,6 +12,58 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
-    </body>
+      <form id="spent">
+        <input name="today[today]" type="text"    placeholder="What day is it today?">
+        <input name="date[date]" type="date"  placeholder="MM/DD/YY">
+        <input name="spend[spend]" type="integer"   placeholder="Total Spent on food">
+        <button type="submit">Log your expense!</button>
+
+
+      </form>
+      <div id="forms" class="forms">
+
+
+
+
+
+
+
+
+
+    <form id="change-password-form" class="gameButton">
+
+      <input name="passwords[old]" type="password" placeholder="{old_password}">
+      <input name="passwords[new]" type="password" placeholder="{new_password}">
+      <input type="submit" value="[change_password}">
+    </form>
+    <form id="sign-out" class="gameButton">
+      <input type="submit" value="[sign_out]">
+    </form>
+  </div>
+  <form id="sign-up-form" class="sign-up-form home">
+    <input name="credentials[email]" type="email" placeholder="[ email_id ">
+    <br>
+    <input name="credentials[password]" type="password" placeholder="[ password ]">
+    <br>
+    <input name="credentials[password_confirmation]" type="password" placeholder="[ password_confirm ]">
+    <br>
+    <input type="submit" value="[ sign Up ]">
+
+
+
+
+
+  </form>
+
+
+  <form id="sign-in-form" class="home">
+    <input name="credentials[email]" type="email" placeholder="[ email_id ]">
+    <br>
+    <input name="credentials[password]" type="password" placeholder="[ password ]">
+    <br>
+    <input type="submit" value="[ sign_in ]">
+
+    </form>
+    <p id="user-message" class="user-message"></p>
+  </body>
 </html>
