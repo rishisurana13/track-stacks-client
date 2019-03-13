@@ -21,6 +21,8 @@ $('#user-message').text('successfully signed In!')
     $('#user-message').text('')
   }, 2000)
   $('#spent').show('click')
+  $('#display').show('click')
+  $('#get-user-days').show('click')
 
 
 }
@@ -38,6 +40,11 @@ const signOutSuccess = (responseData) => {
     $('#user-message').text('')
   }, 2000)
   $('#spent').hide('click')
+  $('#display').hide('click')
+  setTimeout(function () {
+    $('#display').text('')
+  }, 2000)
+  $('#get-user-days').hide('click')
 
 
 
@@ -94,9 +101,45 @@ const failure = () => {
 
 }
 
-const createDaySuccess = () => {
+const createDaySuccess = (responseData) => {
   $('#user-message').text('successfully logged expense!')
 }
+
+
+const getDaysSuccess = function (responseData) {
+
+    responseData.days.forEach(day => {
+    console.log(responseData.user_id)
+    const dayHtml = (`
+    <p>Date : ${day.date}</p>
+    <p>DAY: ${day.today}</p>
+    <p>SPEND: ${day.spend}</p>
+    <p>user ID: ${day.id}</p>
+    <br>
+    `)
+    $('#display').append(dayHtml)
+
+  })
+
+}
+const getUserSuccess = function (responseData) {
+  const user = responseData.user
+
+
+for (let i = 0; i <= user.days.length; i++) {
+    const userHtml = (`
+    <p>Spend : ${user.days[i].spend} </p>
+    <p>Day : ${user.days[i].today}</p>
+    <p>Day : ${user.days[i].date}</p>
+
+    <br>
+    `)
+    $('#display').append(userHtml)
+  }
+}
+
+
+
 
 
 
@@ -110,6 +153,8 @@ changePasswordSuccess,
 signOutFailure,
 signOutSuccess,
 failure,
-createDaySuccess
+createDaySuccess,
+getDaysSuccess,
+getUserSuccess
 
 }

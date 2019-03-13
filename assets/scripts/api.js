@@ -16,12 +16,13 @@ const signIn = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
+
     data: formData
   })
 }
 
 const changePassword = (formData) => {
-console.log('store: ', store)
+  console.log('store: ', store)
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
@@ -48,26 +49,53 @@ const createDays = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/days',
     method: 'POST',
-
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
 
     data: formData
   })
 }
+// const getDays = () => {
+//   return $.ajax({
+// // try inputing user ID to retrieve data
+//     url: config.apiUrl + '/days/',
+//     method: 'GET',
+//      headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//
+//
+//   })
+// }
+const getDays = function () {
+  return $.ajax({
+    url: config.apiUrl + '/days/',
+    method: 'GET',
+    headers: {
+    Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
-
-
-
-
-
+const getUser = function (id) {
+  return $.ajax({
+      url: config.apiUrl + '/users/' + `${id}`,
+      method: 'GET',
+      headers: {
+      Authorization: 'Token token=' + store.user.token
+      }
+    })
+}
 
 
 module.exports = {
-signUp,
-signIn,
-changePassword,
-signOut,
-createDays
-
-
+  signUp,
+  signIn,
+  changePassword,
+  signOut,
+  createDays,
+  getDays,
+  getUser
 
 }
