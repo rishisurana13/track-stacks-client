@@ -16,7 +16,7 @@ const onSignUp = (event) => {
   api.signUp(formData)
     .then(ui.signUpSuccess)
     .catch(ui.failure)
-  $('#sign-up-form').text('')
+
 }
 const onSignIn = (event) => {
   event.preventDefault()

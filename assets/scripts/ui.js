@@ -5,17 +5,19 @@ const store = require('./store.js')
 
 const signUpSuccess = () => {
   $('#user-message').text('successfully signed up!')
-  $('#sign-up-form').text('')
+   $('#sign-up-form').text('')
 }
 const signInSuccess = (responseData) => {
 
 $('#user-message').text('successfully signed In!')
   store.userId = responseData.user.id
   store.user = responseData.user
-  $('#sign-in-form').hide('click')
-  $('#sign-up-form').hide('click')
+  $('#sign-in-form').hide('submit')
+  $('#sign-up-form').hide('submit')
   $('#sign-out').show('click')
   $('#change-password-form').show('click')
+  $('#delete-day-form').show('click')
+  $('#update-day-form').show('click')
 
   $('#resetButton').show('click')
   setTimeout(function () {
@@ -36,6 +38,8 @@ const signOutSuccess = (responseData) => {
   $('#sign-up-form').show('click')
   $('#sign-out').hide('click')
   $('#change-password-form').hide('click')
+  $('#delete-day-form').hide('click')
+  $('#update-day-form').hide('click')
 
   setTimeout(function () {
     $('#user-message').text('')
@@ -108,40 +112,30 @@ const createDaySuccess = (responseData) => {
 }
 
 
-const getDaysSuccess = function (responseData) {
 
-    responseData.days.forEach(day => {
-    console.log(responseData.user_id)
-    const dayHtml = (`
-    <p>Date : ${day.date}</p>
-    <p>DAY: ${day.today}</p>
-    <p>SPEND: ${day.spend}</p>
-    <p>user ID: ${day.id}</p>
-    <br>
-    `)
-    $('#display').append(dayHtml)
-
-  })
-
-}
 const getUserSuccess = function (responseData) {
   const user = responseData.user
 
 
+
 $('#display').html(' ')
+
   // const userId = responseData.user.id
 
 
 for (let i = 0; i <= user.days.length; i++) {
     const userHtml = (`
-      <div>
-    <p>ID : ${user.days[i].id} </p>
-    <p>Date : ${user.days[i].date}</p>
-    <p>Day : ${user.days[i].today}</p>
-    <p>Spend : ${user.days[i].spend} </p>
-
-
+      <div class="col-6 col-md-12 box">
+    <p> ID : ${user.days[i].id} </p>
     <br>
+    <p> Date : ${user.days[i].date}</p>
+    <br>
+    <p> Day : ${user.days[i].today}</p>
+    <br>
+    <p> Spend : ${user.days[i].spend} </p>
+
+
+
     <div>
     `)
 
@@ -156,9 +150,10 @@ for (let i = 0; i <= user.days.length; i++) {
 
 }
 const deleteDaySuccess = function (responseData) {
-      $('#user-message').html('BOOK DELETED')
+      $('#user-message').html('ITEM DELETED')
 
-      $('#display').html('Request books again')
+
+
     }
 
     const updateDaySuccess = function (responseData) {
@@ -182,7 +177,7 @@ signOutFailure,
 signOutSuccess,
 failure,
 createDaySuccess,
-getDaysSuccess,
+
 getUserSuccess,
 deleteDaySuccess,
 updateDaySuccess

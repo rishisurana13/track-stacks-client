@@ -6,36 +6,51 @@ body {
   background-color: black;
   //font-size: 16px;
 }
-p{
+p {
   font-family: VCR osd mono;
-  color: white;
-  display:inline-grid;
+  color: #32CD32;
+  display: inline-grid;
   padding: 20px;
   margin-left: 100px;
 
 }
-form {
+.login {
   width: 25.5%;
   height: 10%;
-  padding: 20px;
-  margin-left: 300px;
+  padding: 50px;
+  margin: 10px;
+  display: inline-block;
 
 
 
 
 
+
+
+}
+.CRUD {
+  width: 25.5%;
+  height: 10%;
+  padding: 50px;
+  float: left;
+  display: inline-flex;
+}
+.box {
+  align-items: center;
+  background-color: black;
+  border: 1px solid white;
+
+  display: flex;
+  height: 80px;
+  justify-content: center;
 }
 
 .user-message {
 margin-right: 350px;
 
-
-
 }
-.forms {
-  width: 42%;
-  float: right;
-  clear: both;
 
-
+h2 {
+  font-family: VCR osd mono;
+  color: #32CD32;
 }
