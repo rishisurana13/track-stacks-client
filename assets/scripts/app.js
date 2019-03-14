@@ -12,14 +12,17 @@ $(() => {
   $('#get-user-days').hide('click')
   $('#sign-up-form').on('submit', events.onSignUp)
 $('#sign-in-form').on('submit', events.onSignIn)
+$('#change-password-form').hide('click')
 
 $('#change-password-form').on('submit', events.onChangePassword)
 $('#sign-out').on('submit', events.onSignOut)
+$('#update-day-form').on('submit', events.onUpdateDay)
 
 
 $('#sign-out').hide('click')
-$('#change-password-form').hide('click')
+
 $('#spent').hide('click')
+$('#delete-day-form').on('submit', events.onDeleteDay)
 
 
 $('#spent').on('submit', events.onCreateDay)

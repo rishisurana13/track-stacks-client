@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
     <head>
+
       <title>Example</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,17 +14,34 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+
       <form id="spent">
-        <input name="day[today]" type="text"    placeholder="What day is it today?">
-        <input name="day[date]" type="integer"  placeholder="MM/DD/YY">
-        <input name="day[spend]" type="integer"   placeholder="Total Spent on food">
+        <input name="day[today]" required type="text"    placeholder="What day is it today?">
+        <input name="day[date]" required type="integer"  placeholder="MM/DD/YY">
+        <input name="day[spend]" required type="integer"   placeholder="Total Spent on food">
         <button type="submit">Log your expense!</button>
 
 
       </form>
       <div id="forms" class="forms">
 
+        <form id="delete-day-form">
+        <label>Enter ID to delete book</label>
+        <input name="day[id]"  required min="1" type="number" placeholder="ID number here"/>
+        <input type="submit" value="delete">
 
+      </form>
+      <form id="update-day-form">
+      <label>Enter ID to update 1 day</label>
+      <input name="day[id]"  required  type="number" placeholder="ID number here"/>
+      <input name="day[today]"  required type="text" placeholder="Day"/>
+      <input name="day[date]" required type="integer"  placeholder="MM/DD/YY">
+
+      <input name="day[spend]"  required min="1" type="number" placeholder="Total Spent"/>
+        <button type="submit">UPDATE</button>
+
+
+    </form>
 
 
 
@@ -48,6 +67,7 @@
     <input name="credentials[password_confirmation]" type="password" placeholder="[ password_confirm ]">
     <br>
     <input type="submit" value="[ sign Up ]">
+    <p id="average"></p>
 
 
 
@@ -69,10 +89,10 @@
 
 
     <form id="get-user-days">
-      <input name="user[id]" type="integer"    placeholder="Acc. ID number">
+      <!-- <input name="user[id]" type="integer"    placeholder="Acc. ID number"> -->
 
 
-      <button   id="get-days" value="get days"></button>
+      <button type="submit" id="get-days">Expense History</button>
     </form>
 
   </body>

@@ -5,11 +5,12 @@ const store = require('./store.js')
 
 const signUpSuccess = () => {
   $('#user-message').text('successfully signed up!')
+  $('#sign-up-form').text('')
 }
 const signInSuccess = (responseData) => {
 
 $('#user-message').text('successfully signed In!')
-
+  store.userId = responseData.user.id
   store.user = responseData.user
   $('#sign-in-form').hide('click')
   $('#sign-up-form').hide('click')
@@ -87,6 +88,7 @@ setTimeout(function () {
 $('#user-message').text('')
 }, 2000)
 
+
 }
 
 const failure = () => {
@@ -126,18 +128,44 @@ const getUserSuccess = function (responseData) {
   const user = responseData.user
 
 
+$('#display').html(' ')
+  // const userId = responseData.user.id
+
+
 for (let i = 0; i <= user.days.length; i++) {
     const userHtml = (`
-    <p>Spend : ${user.days[i].spend} </p>
+      <div>
+    <p>ID : ${user.days[i].id} </p>
+    <p>Date : ${user.days[i].date}</p>
     <p>Day : ${user.days[i].today}</p>
-    <p>Day : ${user.days[i].date}</p>
+    <p>Spend : ${user.days[i].spend} </p>
+
 
     <br>
+    <div>
     `)
-    $('#display').append(userHtml)
-  }
-}
 
+  // a = $('#display').remove(userHtml) to remove before updating
+   $('#display').append(userHtml)
+    // $('#get-user-days').hide('submit')
+
+  }
+
+
+
+
+}
+const deleteDaySuccess = function (responseData) {
+      $('#user-message').html('BOOK DELETED')
+
+      $('#display').html('Request books again')
+    }
+
+    const updateDaySuccess = function (responseData) {
+          $('#user-message').html('DAY Updated')
+
+          $('#display').html('Request Days again')
+        }
 
 
 
@@ -155,6 +183,9 @@ signOutSuccess,
 failure,
 createDaySuccess,
 getDaysSuccess,
-getUserSuccess
+getUserSuccess,
+deleteDaySuccess,
+updateDaySuccess
+
 
 }

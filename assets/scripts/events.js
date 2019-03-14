@@ -16,8 +16,7 @@ const onSignUp = (event) => {
   api.signUp(formData)
     .then(ui.signUpSuccess)
     .catch(ui.failure)
-  // $('form').trigger('reset')
-
+  $('#sign-up-form').text('')
 }
 const onSignIn = (event) => {
   event.preventDefault()
@@ -29,6 +28,7 @@ const onSignIn = (event) => {
   api.signIn(formData)
     .then(ui.signInSuccess)
     .catch(ui.failure)
+
     // $('form').trigger('reset')
 }
 
@@ -42,7 +42,7 @@ const onChangePassword = (event) => {
   api.changePassword(formData)
     .then(ui.changePasswordSuccess)
     .catch(ui.failure)
-  // $('form').trigger('reset')
+  $('#change-password-form').text('')
 }
 
 const onSignOut = (event) => {
@@ -68,6 +68,7 @@ const onCreateDay = (event) => {
   api.createDays(formData)
     .then(ui.createDaySuccess)
     .catch(ui.failure)
+
   // $('form').trigger('reset')
 }
 const onGetDays = function () {
@@ -77,19 +78,35 @@ const onGetDays = function () {
     .then(ui.getDaysSuccess)
     .catch(ui.failure)
 }
- const onGetUser = function (event) {
-   event.preventDefault()
-   const formData = getFormFields(event.target)
-     console.log(formData)
+const onGetUser = function (event) {
+  event.preventDefault()
+  // const formData = getFormFields(event.target)
 
-     api.getUser(formData.user.id) // (formdata.user.id)
+  api.getUser(store.user.id) // (formdata.user.id)
+    .then(ui.getUserSuccess)
+
+    .catch(ui.failure)
+}
+
+const onDeleteDay = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+  console.log(formData)
+
+  api.deleteDay(formData.day.id)
+    .then(ui.deleteDaySuccess) // this
+    .catch(ui.failure)
+}
+
+const onUpdateDay = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+  console.log(formData)
+
+  api.updateDay(formData.day)
     .then(ui.getUserSuccess)
     .catch(ui.failure)
-
-
- }
-
-
+}
 
 module.exports = {
   onSignUp,
@@ -98,5 +115,7 @@ module.exports = {
   onSignOut,
   onCreateDay,
   onGetDays,
-  onGetUser
+  onGetUser,
+  onDeleteDay,
+  onUpdateDay
 }

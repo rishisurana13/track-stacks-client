@@ -86,6 +86,32 @@ const getUser = function (id) {
       Authorization: 'Token token=' + store.user.token
       }
     })
+
+
+}
+
+const deleteDay = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/days/' + `${id}`,
+    method: 'DELETE',
+    headers: {
+    Authorization: 'Token token=' + store.user.token
+  }
+
+  })
+}
+
+const updateDay = function (day) {
+  return $.ajax({
+      url: config.apiUrl + `/days/${day.id}`,
+      method: 'PATCH',
+      headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+      data: {
+        day: day
+      }
+  })
 }
 
 
@@ -96,6 +122,8 @@ module.exports = {
   signOut,
   createDays,
   getDays,
-  getUser
+  getUser,
+  deleteDay,
+  updateDay
 
 }
