@@ -21,6 +21,7 @@ $('#user-message').text('successfully signed In!')
   $('#logout-toggle').show('click')
   $('#sign-up-toggle').hide('click')
   $('#delete-toggle').show('click')
+  $('#get-day-form').show('click')
 
 
   $('#resetButton').show('click')
@@ -57,6 +58,7 @@ const signOutSuccess = (responseData) => {
   $('#logout-toggle').hide('click')
   $('#log-expense-toggle').hide('click')
   $('#change-pw-toggle').hide('click')
+  $('#get-day-form').hide('click')
 
 
   setTimeout(function () {
