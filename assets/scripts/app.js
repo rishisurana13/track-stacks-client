@@ -26,6 +26,8 @@ $('#log-expense-toggle').hide('click')
 $('#change-pw-toggle').hide('click')
 $('#get-day-form').on('submit', events.onGetDay)
 $('#get-day-form').hide('click')
+$('#get-avg-toggle').hide('click')
+$('#get-avg-toggle').on('click', events.onGetAvg)
 
 
 $('#sign-out').hide('click')

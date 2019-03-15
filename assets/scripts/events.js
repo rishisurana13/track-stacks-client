@@ -111,6 +111,8 @@ const onDeleteDay = function (event) {
     .then(ui.deleteDaySuccess) // this
     .catch(ui.failure)
     $('#delete-day-form').trigger('reset')
+    $('#user-message').trigger('reset')
+
 }
 
 const onUpdateDay = function (event) {
@@ -124,6 +126,19 @@ const onUpdateDay = function (event) {
     $('#update-day-form').trigger('reset')
 }
 
+
+
+const onGetAvg = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+
+  api.getUser(store.user.id) // (formdata.user.id)
+    .then(ui.getAvgSuccess)
+    .catch(ui.failure)
+}
+
+
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -134,5 +149,6 @@ module.exports = {
   onGetUser,
   onDeleteDay,
   onUpdateDay,
-  onGetDay
+  onGetDay,
+  onGetAvg
 }

@@ -22,6 +22,7 @@ $('#user-message').text('successfully signed In!')
   $('#sign-up-toggle').hide('click')
   $('#delete-toggle').show('click')
   $('#get-day-form').show('click')
+  $('#get-avg-toggle').show('click')
 
 
   $('#resetButton').show('click')
@@ -59,6 +60,7 @@ const signOutSuccess = (responseData) => {
   $('#log-expense-toggle').hide('click')
   $('#change-pw-toggle').hide('click')
   $('#get-day-form').hide('click')
+  $('#get-avg-toggle').hide('click')
 
 
   setTimeout(function () {
@@ -265,6 +267,41 @@ const deleteDaySuccess = function (responseData) {
       }
 
 
+      const getAvgSuccess = function (responseData) {
+        const user = responseData.user
+
+
+
+      $('#display').html(' ')
+
+      let total = 0
+
+      for (let i = 0; i < user.days.length; i++) {
+        total  += (user.days[i].spend)
+
+
+
+
+
+
+
+      }
+
+       const avg = (total / user.days.length)
+       // + (total % user.days.length)
+      const aa = (`
+        <div class="col-6 col-md-12 box">
+      <p> Average : ${avg} </p>
+
+
+
+
+
+      <div>
+      `)
+      $('#display').html(aa)
+
+    }
 
 
 
@@ -283,7 +320,8 @@ createDaySuccess,
 getUserSuccess,
 deleteDaySuccess,
 updateDaySuccess,
-getDaySuccess
+getDaySuccess,
+getAvgSuccess
 
 
 }
