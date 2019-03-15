@@ -5,7 +5,7 @@ const store = require('./store.js')
 
 const signUpSuccess = () => {
   $('#user-message').text('successfully signed up!')
-   $('#sign-up-form').text('')
+  $('#sign-up-form').trigger('reset')
 }
 const signInSuccess = (responseData) => {
 
@@ -94,6 +94,7 @@ $('#user-message').text('error on sign up')
 setTimeout(function () {
 $('#user-message').text('')
 }, 2000)
+$('#sign-up-form').trigger('reset')
 }
 
 const signInFailure = () => {
@@ -101,6 +102,7 @@ $('#user-message').text('error on sign in')
 setTimeout(function () {
 $('#user-message').text('')
 }, 2000)
+$('#sign-in-form').trigger('reset')
 }
 
 const changePasswordFailure = () => {
@@ -108,12 +110,17 @@ $('#user-message').text('error in changing password')
 setTimeout(function () {
 $('#user-message').text('')
 }, 2000)
+$('#sign-up-form').trigger('reset')
+
+
 }
 const changePasswordSuccess = () => {
 $('#user-message').text('successfully changed password!')
 setTimeout(function () {
 $('#user-message').text('')
+
 }, 2000)
+
 
 
 }

@@ -16,6 +16,7 @@ const onSignUp = (event) => {
   api.signUp(formData)
     .then(ui.signUpSuccess)
     .catch(ui.failure)
+  $('#sign-password-up').trigger('reset')
 
 }
 const onSignIn = (event) => {
@@ -42,7 +43,8 @@ const onChangePassword = (event) => {
   api.changePassword(formData)
     .then(ui.changePasswordSuccess)
     .catch(ui.failure)
-  $('#change-password-form').text('')
+    $('#change-password-form').trigger('reset')
+
 }
 
 const onSignOut = (event) => {
@@ -68,6 +70,7 @@ const onCreateDay = (event) => {
   api.createDays(formData)
     .then(ui.createDaySuccess)
     .catch(ui.failure)
+      $('#spent').trigger('reset')
 
   // $('form').trigger('reset')
 }
@@ -107,6 +110,7 @@ const onDeleteDay = function (event) {
   api.deleteDay(formData.day.id)
     .then(ui.deleteDaySuccess) // this
     .catch(ui.failure)
+    $('#delete-day-form').trigger('reset')
 }
 
 const onUpdateDay = function (event) {
@@ -117,6 +121,7 @@ const onUpdateDay = function (event) {
   api.updateDay(formData.day)
     .then(ui.getUserSuccess)
     .catch(ui.failure)
+    $('#update-day-form').trigger('reset')
 }
 
 module.exports = {

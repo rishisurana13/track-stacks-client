@@ -9,8 +9,8 @@ const events = require('./events.js')
 const api = require('./api.js')
 
 $(() => {
-  $('#get-user-days').hide('click')
-  $('#sign-up-form').on('submit', events.onSignUp)
+$('#get-user-days').hide('click')
+$('#sign-up-form').on('submit', events.onSignUp)
 $('#sign-in-form').on('submit', events.onSignIn)
 $('#change-password-form').hide('submit')
 $('#delete-day-form').hide('click')
