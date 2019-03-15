@@ -13,11 +13,15 @@ $('#user-message').text('successfully signed In!')
   store.userId = responseData.user.id
   store.user = responseData.user
   $('#sign-in-form').hide('submit')
-  $('#sign-up-form').hide('submit')
+  $('#sign-up-form').hide('click')
   $('#sign-out').show('click')
   $('#change-password-form').show('click')
   $('#delete-day-form').show('click')
   $('#update-day-form').show('click')
+  $('#logout-toggle').show('click')
+  $('#sign-up-toggle').hide('click')
+  $('#delete-toggle').show('click')
+
 
   $('#resetButton').show('click')
   setTimeout(function () {
@@ -26,6 +30,14 @@ $('#user-message').text('successfully signed In!')
   $('#spent').show('click')
   $('#display').show('click')
   $('#get-user-days').show('click')
+  $('#expense-toggle').show('click')
+  $('#login-toggle').hide('click')
+  $('#update-toggle').show('click')
+  $('#log-expense-toggle').show('click')
+  $('#change-pw-toggle').show('click')
+
+
+
 
 
 }
@@ -40,6 +52,12 @@ const signOutSuccess = (responseData) => {
   $('#change-password-form').hide('click')
   $('#delete-day-form').hide('click')
   $('#update-day-form').hide('click')
+  $('#expense-toggle').hide('click')
+  $('#sign-up-toggle').show('click')
+  $('#logout-toggle').hide('click')
+  $('#log-expense-toggle').hide('click')
+  $('#change-pw-toggle').hide('click')
+
 
   setTimeout(function () {
     $('#user-message').text('')
@@ -50,6 +68,9 @@ const signOutSuccess = (responseData) => {
     $('#display').text('')
   }, 2000)
   $('#get-user-days').hide('click')
+  $('#login-toggle').show('click')
+  $('#delete-toggle').hide('click')
+  $('#update-toggle').hide('click')
 
 
 
@@ -106,9 +127,35 @@ const failure = () => {
 
 
 }
+// const averageSpend = function (responseData) {
+//   const user = responseData.user
+//   let total = 0
+//   for (let i = 0; i <= user.days.length; i++) {
+//     total += user.days[i].spend
+//
+// }
+// const numberOfIds = user.days.length
+// const avg = total / numberOfIds
+// const aa = (`
+//
+//
+// <h1> Avg Spend : $${avg} </h1>
+//
+//
+//
+//
+//
+// `)
+// $('#display').append(aa)
+//
+//
+// }
 
 const createDaySuccess = (responseData) => {
   $('#user-message').text('successfully logged expense!')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
 }
 
 
@@ -120,7 +167,7 @@ const getUserSuccess = function (responseData) {
 
 $('#display').html(' ')
 
-  // const userId = responseData.user.id
+
 
 
 for (let i = 0; i <= user.days.length; i++) {
@@ -139,18 +186,28 @@ for (let i = 0; i <= user.days.length; i++) {
     <div>
     `)
 
-  // a = $('#display').remove(userHtml) to remove before updating
+
    $('#display').append(userHtml)
-    // $('#get-user-days').hide('submit')
+
+
+
+
 
   }
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
 const deleteDaySuccess = function (responseData) {
       $('#user-message').html('ITEM DELETED')
+
 
 
 
@@ -161,6 +218,42 @@ const deleteDaySuccess = function (responseData) {
 
           $('#display').html('Request Days again')
         }
+
+      const getDaySuccess = function (responseData) {
+        const day = responseData.day
+
+
+
+      $('#display').html(' ')
+
+
+
+
+
+          const userHtml = (`
+            <div class="col-6 col-md-12 box">
+          <p> ID : ${day.id} </p>
+          <br>
+          <p> Date : ${day.date}</p>
+          <br>
+          <p> Day : ${day.today}</p>
+          <br>
+          <p> Spend : ${day.spend} </p>
+
+
+
+          <div>
+          `)
+
+
+         $('#display').append(userHtml)
+
+
+
+
+
+
+      }
 
 
 
@@ -180,7 +273,8 @@ createDaySuccess,
 
 getUserSuccess,
 deleteDaySuccess,
-updateDaySuccess
+updateDaySuccess,
+getDaySuccess
 
 
 }

@@ -18,6 +18,13 @@ $('#update-day-form').hide('click')
 $('#change-password-form').on('submit', events.onChangePassword)
 $('#sign-out').on('submit', events.onSignOut)
 $('#update-day-form').on('submit', events.onUpdateDay)
+$('#expense-toggle').hide('click')
+$('#logout-toggle').hide('click')
+$('#delete-toggle').hide('click')
+$('#update-toggle').hide('click')
+$('#log-expense-toggle').hide('click')
+$('#change-pw-toggle').hide('click')
+$('#get-day-form').on('submit', events.onGetDay)
 
 
 $('#sign-out').hide('click')

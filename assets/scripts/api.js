@@ -114,6 +114,18 @@ const updateDay = function (day) {
   })
 }
 
+const getDay = function (id) {
+  return $.ajax({
+      url: config.apiUrl + '/days/' + `${id}`,
+      method: 'GET',
+      headers: {
+      Authorization: 'Token token=' + store.user.token
+      }
+    })
+
+
+}
+
 
 module.exports = {
   signUp,
@@ -124,6 +136,7 @@ module.exports = {
   getDays,
   getUser,
   deleteDay,
-  updateDay
+  updateDay,
+  getDay
 
 }

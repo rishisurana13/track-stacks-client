@@ -85,7 +85,18 @@ const onGetUser = function (event) {
   api.getUser(store.user.id) // (formdata.user.id)
     .then(ui.getUserSuccess)
 
+
+}
+
+const onGetDay = function (event) {
+  event.preventDefault()
+ const formData = getFormFields(event.target)
+
+  api.getDay(formData.day.id) // (formdata.user.id)
+    .then(ui.getDaySuccess)
     .catch(ui.failure)
+
+
 }
 
 const onDeleteDay = function (event) {
@@ -117,5 +128,6 @@ module.exports = {
   onGetDays,
   onGetUser,
   onDeleteDay,
-  onUpdateDay
+  onUpdateDay,
+  onGetDay
 }
