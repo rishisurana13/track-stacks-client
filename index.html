@@ -2,7 +2,7 @@
 <html>
 
     <head>
-
+      <script src="plotly-latest.min.js"></script>
       <!-- <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
     Launch demo modal
   </button> -->
@@ -18,6 +18,7 @@
 
 
     <body>
+
 
 
       <div class="dropdown dropright" id="login-toggle">
@@ -128,7 +129,7 @@ Delete a day
 <a class="dropdown-item">
   <form id="delete-day-form">
 
-  <input name="day[id]"  required min="1" type="number" placeholder="ID number here"/>
+  <input name="day[id]"  required min="1" type="integer" placeholder="ID number here"/>
   <input type="submit" value="delete">
 
 </form>
@@ -153,9 +154,9 @@ Update a Day
 <a class="dropdown-item">
   <form id="update-day-form">
 
-  <input name="day[id]"  required  type="number" placeholder="ID number here"/>
-  <input name="day[today]"  required type="text" placeholder="Day"/>
-  <input name="day[date]" required type="integer"  placeholder="MM/DD/YY">
+  <input name="day[id]"  required  type="integer" placeholder="ID number here"/>
+
+  <input name="day[date]" required type="date"  placeholder="MM/DD/YY">
 
   <input name="day[spend]"  required min="1" type="number" placeholder="Total Spent"/>
     <button type="submit">UPDATE</button>
@@ -174,13 +175,13 @@ Update a Day
 <div class="dropdown dropright" id="log-expense-toggle">
 
 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Log expense for today
+Log expense
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 <a class="dropdown-item">
   <form id="spent">
-    <input name="day[today]" required type="text"    placeholder="What day is it today?">
-    <input name="day[date]" required type="integer"  placeholder="MM/DD/YY">
+    <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
+    <input name="day[date]" required type="date"  placeholder="MM/DD/YY">
     <input name="day[spend]" required type="integer"   placeholder="Total Spent on food">
     <button type="submit">Log your expense!</button>
 
@@ -236,7 +237,7 @@ Get Day
 
   <form id="get-day-form">
 
-  <input name="day[id]"  required  type="number" placeholder="ID number here"/>
+  <input name="day[id]"  required  type="integer" placeholder="ID number here"/>
 
 
 
@@ -270,6 +271,7 @@ Get avg
 
 </a>
 
+
 <div class="dropdown dropright" >
 
 
@@ -295,8 +297,11 @@ Get avg
 
 
 
-<h2 id="user-message" class="user-message"></h2>
 
+
+
+<h2 id="user-message" class="user-message"></h2>
+<div id="avg"></div>
     <div id="display"></div>
 
 

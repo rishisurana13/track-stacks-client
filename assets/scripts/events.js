@@ -83,10 +83,11 @@ const onGetDays = function () {
 }
 const onGetUser = function (event) {
   event.preventDefault()
-  // const formData = getFormFields(event.target)
+  const formData = getFormFields(event.target)
 
   api.getUser(store.user.id) // (formdata.user.id)
     .then(ui.getUserSuccess)
+    .catch(ui.failure)
 
 
 }
