@@ -8,8 +8,7 @@ const signUpSuccess = () => {
   $('#sign-up-form').trigger('reset')
 }
 const signInSuccess = (responseData) => {
-
-$('#user-message').text('successfully signed In!')
+  $('#user-message').text('successfully signed In!')
   store.userId = responseData.user.id
   store.user = responseData.user
   $('#sign-in-form').hide('submit')
@@ -23,6 +22,7 @@ $('#user-message').text('successfully signed In!')
   $('#delete-toggle').show('click')
   $('#get-day-form').show('click')
   $('#get-avg-toggle').show('click')
+  $('#avg').show('click')
 
 
   $('#resetButton').show('click')
@@ -37,11 +37,6 @@ $('#user-message').text('successfully signed In!')
   $('#update-toggle').show('click')
   $('#log-expense-toggle').show('click')
   $('#change-pw-toggle').show('click')
-
-
-
-
-
 }
 const signOutSuccess = (responseData) => {
   $('#user-message').text('successfully signed Out!')
@@ -61,6 +56,9 @@ const signOutSuccess = (responseData) => {
   $('#change-pw-toggle').hide('click')
   $('#get-day-form').hide('click')
   $('#get-avg-toggle').hide('click')
+  $('#avg').hide('click')
+  $('#avg').html(' ')
+
 
 
   setTimeout(function () {
@@ -75,68 +73,54 @@ const signOutSuccess = (responseData) => {
   $('#login-toggle').show('click')
   $('#delete-toggle').hide('click')
   $('#update-toggle').hide('click')
-
-
-
-
 }
-
-
-
 
 const signOutFailure = () => {
-$('#user-message').text('error on sign out')
-setTimeout(function () {
-  $('#user-message').text('')
-}, 2000)
-}
-
-const signUpFailure = () => {
-$('#user-message').text('error on sign up')
-setTimeout(function () {
-$('#user-message').text('')
-}, 2000)
-$('#sign-up-form').trigger('reset')
-}
-
-const signInFailure = () => {
-$('#user-message').text('error on sign in')
-setTimeout(function () {
-$('#user-message').text('')
-}, 2000)
-$('#sign-in-form').trigger('reset')
-}
-
-const changePasswordFailure = () => {
-$('#user-message').text('error in changing password')
-setTimeout(function () {
-$('#user-message').text('')
-}, 2000)
-$('#sign-up-form').trigger('reset')
-
-
-}
-const changePasswordSuccess = () => {
-$('#user-message').text('successfully changed password!')
-setTimeout(function () {
-$('#user-message').text('')
-
-}, 2000)
-
-
-
-}
-
-const failure = () => {
-
-  $('#user-message').text('something went wrong')
+  $('#user-message').text('error on sign out')
   setTimeout(function () {
     $('#user-message').text('')
   }, 2000)
+}
+
+const signUpFailure = () => {
+  $('#user-message').text('error on sign up')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+  $('#sign-up-form').trigger('reset')
+}
+
+const signInFailure = () => {
+  $('#user-message').text('error on sign in')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+  $('#sign-in-form').trigger('reset')
+}
+
+const changePasswordFailure = () => {
+  $('#user-message').text('error in changing password')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+  $('#sign-up-form').trigger('reset')
+}
+const changePasswordSuccess = () => {
+  $('#user-message').text('successfully changed password!')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+}
+
+const failure = () => {
+  $('#user-message').text('something went wrong')
+
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+
+
   // $('form').trigger('reset')
-
-
-
 }
 // const averageSpend = function (responseData) {
 //   const user = responseData.user
@@ -169,41 +153,48 @@ const createDaySuccess = (responseData) => {
   }, 2000)
 }
 
-
-
 const getUserSuccess = function (responseData) {
   const user = responseData.user
+  $('#display').html(' ')
+
+const bb = user.days.sort(function (a, b) {
+    return b.id - a.id
+})
+
+const aa = bb.sort(function (a, b) {
+  // Turn your strings into dates, and then subtract them
+  // to get a value that is either negative, positive, or zero.
+  return new Date(a.date) - new Date(b.date)
+})
 
 
 
-$('#display').html(' ')
 
 
 
+  for (let i = 0; i < (aa.length); i++) {
 
-for (let i = 0; i <= user.days.length; i++) {
+
     const userHtml = (`
-      <div class="col-6 col-md-12 box">
-    <p> ID : ${user.days[i].id} </p>
-    <br>
-    <p> Date : ${user.days[i].date}</p>
-    <br>
-    <p> Day : ${user.days[i].today}</p>
-    <br>
-    <p> Spend : ${user.days[i].spend} </p>
+
+      <div class="col-sm-4 col-lg-3 box"">
+    <p>
+          ID: ${aa[i].id}
+          <br>
+        Date: ${aa[i].date}
+        <br>
+ Expenditure: $${aa[i].spend}.00
+
+     </p>
 
 
 
-    <div>
+
+
+    </div>
     `)
 
-
-   $('#display').append(userHtml)
-
-
-
-
-
+    $('#display').append(userHtml)
   }
 }
 
@@ -211,43 +202,16 @@ for (let i = 0; i <= user.days.length; i++) {
 
 
 
+const getDaySuccess = function (responseData) {
+  const day = responseData.day
 
+  $('#display').html(' ')
 
-
-
-
-const deleteDaySuccess = function (responseData) {
-      $('#user-message').html('ITEM DELETED')
-
-
-
-
-    }
-
-    const updateDaySuccess = function (responseData) {
-          $('#user-message').html('DAY Updated')
-
-          $('#display').html('Request Days again')
-        }
-
-      const getDaySuccess = function (responseData) {
-        const day = responseData.day
-
-
-
-      $('#display').html(' ')
-
-
-
-
-
-          const userHtml = (`
-            <div class="col-6 col-md-12 box">
+  const userHtml = (`
+            <div class="div class="col-sm-4 col-lg-3 box">
           <p> ID : ${day.id} </p>
           <br>
           <p> Date : ${day.date}</p>
-          <br>
-          <p> Day : ${day.today}</p>
           <br>
           <p> Spend : ${day.spend} </p>
 
@@ -256,72 +220,68 @@ const deleteDaySuccess = function (responseData) {
           <div>
           `)
 
+  $('#display').append(userHtml)
+}
+const updateDaySuccess = function (responseData) {
+  $('#user-message').html('DAY Updated')
 
-         $('#display').append(userHtml)
+}
 
-
-
-
-
-
-      }
-
-
-      const getAvgSuccess = function (responseData) {
-        const user = responseData.user
+const deleteDaySuccess = function (responseData) {
+  $('#user-message').html('ITEM DELETED')
 
 
 
-      $('#display').html(' ')
+}
 
-      let total = 0
+const getAvgSuccess = function (responseData) {
+  const user = responseData.user
 
-      for (let i = 0; i < user.days.length; i++) {
-        total  += (user.days[i].spend)
+  let total = 0
 
+  for (let i = 0; i < (user.days.length); i++) {
+    total += (user.days[i].spend)
+  }
 
-
-
-
-
-
-      }
-
-       const avg = (total / user.days.length)
-       // + (total % user.days.length)
-      const aa = (`
-        <div class="col-6 col-md-12 box">
-      <p> Average : ${avg} </p>
+  const avg = (total / user.days.length)
+  // + (total % user.days.length)
+  const aa = (`
+        <div class="col-sm-4 col-lg-3 box">
+        <p class="avg-num">
+      Average:
+        ${avg}
+        </p>
 
 
 
 
 
-      <div>
+      </div>
       `)
-      $('#display').html(aa)
+  $('#avg').html(aa)
 
-    }
+}
+
+
 
 
 
 module.exports = {
-signUpSuccess,
-signUpFailure,
-signInFailure,
-signInSuccess,
-changePasswordFailure,
-changePasswordSuccess,
-signOutFailure,
-signOutSuccess,
-failure,
-createDaySuccess,
+  signUpSuccess,
+  signUpFailure,
+  signInFailure,
+  signInSuccess,
+  changePasswordFailure,
+  changePasswordSuccess,
+  signOutFailure,
+  signOutSuccess,
+  failure,
+  createDaySuccess,
 
-getUserSuccess,
-deleteDaySuccess,
-updateDaySuccess,
-getDaySuccess,
-getAvgSuccess
-
+  getUserSuccess,
+  deleteDaySuccess,
+  updateDaySuccess,
+  getDaySuccess,
+  getAvgSuccess
 
 }

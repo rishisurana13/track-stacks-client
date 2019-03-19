@@ -9,9 +9,11 @@ body {
 p {
   font-family: VCR osd mono;
   color: #32CD32;
-  display: inline-grid;
+  display: inline-flex;
   padding: 20px;
-  margin-left: 100px;
+  text-align: center;
+  font-size: 16px;
+
 
 }
 .login {
@@ -36,13 +38,20 @@ p {
   display: inline-flex;
 }
 .box {
-  align-items: center;
-  background-color: black;
-  border: 1px solid white;
 
-  display: flex;
-  height: 80px;
-  justify-content: center;
+  background-color: black;
+  border: 2px solid white;
+  text-align: center;
+
+
+
+  display: inline-flex;
+  height: 110px;
+  width: 400px;
+
+}
+.avg-num {
+  color: red;
 }
 
 .user-message {
