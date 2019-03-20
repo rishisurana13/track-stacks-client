@@ -98,6 +98,63 @@
           </div>
         </li>
         <li>
+          <div class="dropdown dropdown" id="change-pw-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Change password
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="change-password-form">
+                  <input name="passwords[old]" type="password" placeholder="{old_password}" id="oldpw">
+                  <input name="passwords[new]" type="password" placeholder="{new_password}" id="newpw">
+                  <input class="btn btn-white" type="submit" value="[change_password}">
+                </form>
+
+
+
+
+
+              </a>
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="log-expense-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Log expense
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="spent">
+                  <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
+                  <input name="day[date]" required type="date" placeholder="MM/DD/YY">
+                  <input name="day[spend]" required type="integer" placeholder="Total Spent on food">
+                  <button class="btn btn-white" type="submit">Log your expense!</button>
+
+
+                </form>
+
+
+
+
+              </a>
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li>
           <div class="dropdown dropdown" id="expense-toggle">
             <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Expenses
@@ -169,62 +226,8 @@
             </div>
           </div>
         </li>
-        <li>
-          <div class="dropdown dropdown" id="log-expense-toggle">
-
-            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Log expense
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item">
-                <form id="spent">
-                  <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
-                  <input name="day[date]" required type="date" placeholder="MM/DD/YY">
-                  <input name="day[spend]" required type="integer" placeholder="Total Spent on food">
-                  <button class="btn btn-white" type="submit">Log your expense!</button>
 
 
-                </form>
-
-
-
-
-              </a>
-
-              <div class="dropdown dropdown">
-
-
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="dropdown dropdown" id="change-pw-toggle">
-
-            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Change password
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item">
-                <form id="change-password-form">
-                  <input name="passwords[old]" type="password" placeholder="{old_password}" id="oldpw">
-                  <input name="passwords[new]" type="password" placeholder="{new_password}" id="newpw">
-                  <input class="btn btn-white" type="submit" value="[change_password}">
-                </form>
-
-
-
-
-
-              </a>
-
-              <div class="dropdown dropdown">
-
-
-              </div>
-            </div>
-          </div>
-        </li>
         <li>
           <div class="dropdown dropdown" id="get-day-form">
 
@@ -281,6 +284,7 @@
             </div>
           </div>
         </li>
+
 
       </ul>
 

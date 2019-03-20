@@ -177,7 +177,7 @@ const aa = bb.sort(function (a, b) {
 
     const userHtml = (`
 
-      <div class="col-sm-4 col-lg-3 box"">
+      <div class="col-sm-4 col-lg-3 box">
     <p>
           ID: ${aa[i].id}
           <br>
@@ -208,16 +208,21 @@ const getDaySuccess = function (responseData) {
   $('#display').html(' ')
 
   const userHtml = (`
-            <div class="div class="col-sm-4 col-lg-3 box">
-          <p> ID : ${day.id} </p>
-          <br>
-          <p> Date : ${day.date}</p>
-          <br>
-          <p> Spend : ${day.spend} </p>
+    <div class="col-sm-4 col-lg-3 box">
+  <p>
+        ID: ${day.id}
+        <br>
+      Date: ${day.date}
+      <br>
+Expenditure: $${day.spend}.00
+
+   </p>
 
 
 
-          <div>
+
+
+  </div>
           `)
 
   $('#display').append(userHtml)
@@ -246,7 +251,7 @@ const getAvgSuccess = function (responseData) {
   const avg = (total / user.days.length)
   // + (total % user.days.length)
   const aa = (`
-        <div class="col-sm-4 col-lg-3 box">
+        <div class="col-sm-4 col-lg-3 box box1">
         <p class="avg-num">
       Average:
         ${avg}
