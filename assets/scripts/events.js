@@ -9,26 +9,26 @@ const store = require('./store.js')
 const onSignUp = (event) => {
   event.preventDefault()
   const form = event.target
-  console.log('form: ', form)
+
   const formData = getFormFields(form)
-  console.log('formData: ', formData)
+
 
   api.signUp(formData)
     .then(ui.signUpSuccess)
-    .catch(ui.failure)
+    .catch(ui.signUpFailure)
   $('#sign-password-up').trigger('reset')
 
 }
 const onSignIn = (event) => {
   event.preventDefault()
   const form = event.target
-  console.log('form: ', form)
+
   const formData = getFormFields(form)
-  console.log('formData: ', formData)
+
 
   api.signIn(formData)
     .then(ui.signInSuccess)
-    .catch(ui.failure)
+    .catch(ui.signInFailure)
 
     // $('form').trigger('reset')
 }
@@ -36,13 +36,13 @@ const onSignIn = (event) => {
 const onChangePassword = (event) => {
   event.preventDefault()
   const form = event.target
-  console.log('form: ', form)
+
   const formData = getFormFields(form)
-  console.log('formData: ', formData)
+
 
   api.changePassword(formData)
     .then(ui.changePasswordSuccess)
-    .catch(ui.failure)
+    .catch(ui.changePasswordFailure)
     $('#change-password-form').trigger('reset')
 
 }
@@ -50,22 +50,22 @@ const onChangePassword = (event) => {
 const onSignOut = (event) => {
   event.preventDefault()
   const form = event.target
-  console.log('form: ', form)
+
   const formData = getFormFields(form)
-  console.log('formData: ', formData)
+
 
   api.signOut(formData)
     .then(ui.signOutSuccess)
-    .catch(ui.failure)
+    .catch(ui.signOutFailure)
   // $('form').trigger('reset')
 }
 
 const onCreateDay = (event) => {
   event.preventDefault()
   const form = event.target
-  console.log('form: ', form)
+
   const formData = getFormFields(form)
-  console.log('formDataa: ', formData)
+
 
   api.createDays(formData)
     .then(ui.createDaySuccess)
@@ -77,7 +77,6 @@ const onCreateDay = (event) => {
 const onGetDays = function () {
   event.preventDefault()
   api.getDays()
-
     .then(ui.getDaysSuccess)
     .catch(ui.failure)
 }
@@ -98,7 +97,7 @@ const onGetDay = function (event) {
 
   api.getDay(formData.day.id) // (formdata.user.id)
     .then(ui.getDaySuccess)
-    .catch(ui.failure)
+    .catch(ui.getDayFailure)
 
 
 }
@@ -106,7 +105,7 @@ const onGetDay = function (event) {
 const onDeleteDay = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData)
+
 
   api.deleteDay(formData.day.id)
     .then(ui.deleteDaySuccess) // this
@@ -119,10 +118,10 @@ const onDeleteDay = function (event) {
 const onUpdateDay = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData)
+
 
   api.updateDay(formData.day)
-    .then(ui.getUserSuccess)
+    .then(ui.updateDaySuccess)
     .catch(ui.failure)
     $('#update-day-form').trigger('reset')
 }
