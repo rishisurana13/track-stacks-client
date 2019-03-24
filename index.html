@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <script src="plotly-latest.min.js"></script>
+
   <!-- <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
     Launch demo modal
   </button> -->
@@ -34,7 +34,7 @@
         <li>
           <div class="dropdown dropdown" id="login-toggle">
             <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Log in
+              Sign in
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">
@@ -135,7 +135,7 @@
                 <form id="spent">
                   <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
                   <input name="day[date]" required type="date" placeholder="MM/DD/YY">
-                  <input name="day[spend]" required type="integer" placeholder="Total Spent on food">
+                  <input name="day[spend]" required type="number" placeholder="Total Spent on food">
                   <button class="btn btn-white" type="submit">Log your expense!</button>
 
 
@@ -173,6 +173,35 @@
           </div>
         </li>
         <li>
+          <div class="dropdown dropdown" id="update-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Update a Day
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="update-day-form">
+
+                  <input name="day[id]" required type="number" placeholder="ID number here" />
+
+                  <input name="day[date]" required type="date" placeholder="MM/DD/YY">
+
+                  <input name="day[spend]" required min="0" type="number" placeholder="Total Spent" />
+                  <button class="btn btn-white" type="submit">UPDATE</button>
+                </form>
+
+
+
+              </a>
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
           <div class="dropdown dropdown" id="delete-toggle">
 
             <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -197,35 +226,7 @@
             </div>
           </div>
         </li>
-        <li>
-          <div class="dropdown dropdown" id="update-toggle">
 
-            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Update a Day
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item">
-                <form id="update-day-form">
-
-                  <input name="day[id]" required type="integer" placeholder="ID number here" />
-
-                  <input name="day[date]" required type="date" placeholder="MM/DD/YY">
-
-                  <input name="day[spend]" required min="1" type="number" placeholder="Total Spent" />
-                  <button class="btn btn-white" type="submit">UPDATE</button>
-                </form>
-
-
-
-              </a>
-
-              <div class="dropdown dropdown">
-
-
-              </div>
-            </div>
-          </div>
-        </li>
 
 
         <li>
@@ -238,9 +239,9 @@
               <a class="dropdown-item">
 
 
-                <form id="get-day-form">
+                <form id="get-day">
 
-                  <input name="day[id]" required type="integer" placeholder="ID number here" />
+                  <input name="day[id]" required type="number" placeholder="ID number here" />
 
 
 

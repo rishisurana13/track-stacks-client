@@ -42,7 +42,7 @@ const signOutSuccess = (responseData) => {
   $('#user-message').text('successfully signed Out!')
   $('form').trigger('reset')
   store.user = null
-  console.log('store: ', store)
+
   $('#sign-in-form').show('click')
   $('#sign-up-form').show('click')
   $('#sign-out').hide('click')
@@ -113,6 +113,7 @@ const changePasswordSuccess = () => {
 }
 
 const failure = () => {
+
   $('#user-message').text('something went wrong')
 
   setTimeout(function () {
@@ -156,6 +157,12 @@ const createDaySuccess = (responseData) => {
 const getUserSuccess = function (responseData) {
   const user = responseData.user
   $('#display').html(' ')
+  if (user.days[0] === undefined) {
+    $('#display').html(`<p> Log an entry, as there are none at the moment. </p>`)
+    setTimeout(function () {
+      $('#display').html('')
+    }, 3000)
+  }
 
 const bb = user.days.sort(function (a, b) {
     return b.id - a.id
@@ -228,12 +235,20 @@ Expenditure: $${day.spend}.00
   $('#display').append(userHtml)
 }
 const updateDaySuccess = function (responseData) {
-  $('#user-message').html('DAY Updated')
+  $('#user-message').html('DAY UPDATED')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+
 
 }
 
 const deleteDaySuccess = function (responseData) {
-  $('#user-message').html('ITEM DELETED')
+
+  $('#user-message').html('ENTRY DELETED')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
 
 
 
@@ -267,6 +282,15 @@ const getAvgSuccess = function (responseData) {
 
 }
 
+const getDayFailure = function () {
+  $('#get-day').trigger('reset')
+  $('#user-message').html('Failed to get entry')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+
+}
+
 
 
 
@@ -287,6 +311,7 @@ module.exports = {
   deleteDaySuccess,
   updateDaySuccess,
   getDaySuccess,
-  getAvgSuccess
+  getAvgSuccess,
+  getDayFailure
 
 }
