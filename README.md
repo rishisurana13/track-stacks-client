@@ -1,4 +1,4 @@
-# FRONT END
+# TRACKSTACKS FRONT END
 This is the client facing respository of the web app 'TrackStacks'.
 Other relevant links in the section below.
 

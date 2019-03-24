@@ -148,7 +148,7 @@ const failure = () => {
 // }
 
 const createDaySuccess = (responseData) => {
-  $('#user-message').text('successfully logged expense!')
+  $('#user-message').text('Successfully Logged Expense, Click Get Expenses!')
   setTimeout(function () {
     $('#user-message').text('')
   }, 2000)
