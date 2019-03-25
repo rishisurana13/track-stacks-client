@@ -90,6 +90,37 @@ const onGetUser = function (event) {
 
 
 }
+const onGetUserMaxToMin = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+
+  api.getUser(store.user.id) // (formdata.user.id)
+    .then(ui.getUserMaxToMinSuccess)
+    .catch(ui.failure)
+
+
+}
+const onGetUserMinToMax = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+
+  api.getUser(store.user.id) // (formdata.user.id)
+    .then(ui.getUserMinToMaxSuccess)
+    .catch(ui.failure)
+
+
+}
+
+const onGetUserNewToOld = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+
+  api.getUser(store.user.id) // (formdata.user.id)
+    .then(ui.getUserNewToOldSuccess)
+    .catch(ui.failure)
+
+
+}
 
 const onGetDay = function (event) {
   event.preventDefault()
@@ -150,5 +181,8 @@ module.exports = {
   onDeleteDay,
   onUpdateDay,
   onGetDay,
-  onGetAvg
+  onGetAvg,
+  onGetUserMaxToMin,
+  onGetUserMinToMax,
+  onGetUserNewToOld
 }
