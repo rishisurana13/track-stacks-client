@@ -161,7 +161,7 @@ const getUserSuccess = function (responseData) {
     $('#display').html(`<p> Log an entry, as there are none at the moment. </p>`)
     setTimeout(function () {
       $('#display').html('')
-    }, 3000)
+    }, 5000)
   }
 
 const bb = user.days.sort(function (a, b) {
@@ -256,6 +256,12 @@ const deleteDaySuccess = function (responseData) {
 
 const getAvgSuccess = function (responseData) {
   const user = responseData.user
+  if (user.days[0] === undefined) {
+    $('#display').html(`<p> Log an entry, as there are none at the moment. </p>`)
+    setTimeout(function () {
+      $('#display').html('')
+    }, 5000)
+  }
 
   let total = 0
 
