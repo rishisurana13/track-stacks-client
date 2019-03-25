@@ -211,6 +211,12 @@ const aa = bb.sort(function (a, b) {
 
 const getDaySuccess = function (responseData) {
   const day = responseData.day
+  if (day === []) {
+    $('#display').html(`<p> Log an entry, as there are none at the moment. </p>`)
+    setTimeout(function () {
+      $('#display').html('')
+    }, 5000)
+  }
 
   $('#display').html(' ')
 
@@ -233,6 +239,7 @@ Expenditure: $${day.spend}.00
           `)
 
   $('#display').append(userHtml)
+  $('#get-day').trigger('reset')
 }
 const updateDaySuccess = function (responseData) {
   $('#user-message').html('DAY UPDATED')
