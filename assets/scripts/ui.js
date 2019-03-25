@@ -211,12 +211,7 @@ const aa = bb.sort(function (a, b) {
 
 const getDaySuccess = function (responseData) {
   const day = responseData.day
-  if (day === []) {
-    $('#display').html(`<p> Log an entry, as there are none at the moment. </p>`)
-    setTimeout(function () {
-      $('#display').html('')
-    }, 5000)
-  }
+
 
   $('#display').html(' ')
 
@@ -302,8 +297,154 @@ const getDayFailure = function () {
     $('#user-message').text('')
   }, 2000)
 
-}
 
+}
+const getUserMaxToMinSuccess = function (responseData) {
+  const user = responseData.user
+  $('#display').html(' ')
+  if (user.days[0] === undefined) {
+    $('#display').html(`<p> Log an entry, as there are none at the moment. </p>`)
+    setTimeout(function () {
+      $('#display').html('')
+    }, 5000)
+  }
+
+const bb = user.days
+
+const aa = bb.sort(function (a, b) {
+  // Turn your strings into dates, and then subtract them
+  // to get a value that is either negative, positive, or zero.
+  return b.spend - a.spend
+})
+
+
+
+
+
+
+  for (let i = 0; i < (aa.length); i++) {
+
+
+    const userHtml = (`
+
+      <div class="col-sm-4 col-lg-3 box">
+    <p>
+          ID: ${aa[i].id}
+          <br>
+        Date: ${aa[i].date}
+        <br>
+ Expenditure: $${aa[i].spend}.00
+
+     </p>
+
+
+
+
+
+    </div>
+    `)
+
+    $('#display').append(userHtml)
+  }
+}
+const getUserMinToMaxSuccess = function (responseData) {
+  const user = responseData.user
+  $('#display').html(' ')
+  if (user.days[0] === undefined) {
+    $('#display').html(`<p> Log an entry, as there are none at the moment. </p>`)
+    setTimeout(function () {
+      $('#display').html('')
+    }, 5000)
+  }
+
+const bb = user.days
+
+const aa = bb.sort(function (a, b) {
+  // Turn your strings into dates, and then subtract them
+  // to get a value that is either negative, positive, or zero.
+  return a.spend - b.spend
+})
+
+
+
+
+
+
+  for (let i = 0; i < (aa.length); i++) {
+
+
+    const userHtml = (`
+
+      <div class="col-sm-4 col-lg-3 box">
+    <p>
+          ID: ${aa[i].id}
+          <br>
+        Date: ${aa[i].date}
+        <br>
+ Expenditure: $${aa[i].spend}.00
+
+     </p>
+
+
+
+
+
+    </div>
+    `)
+
+    $('#display').append(userHtml)
+  }
+}
+const getUserNewToOldSuccess = function (responseData) {
+  const user = responseData.user
+  $('#display').html(' ')
+  if (user.days[0] === undefined) {
+    $('#display').html(`<p> Log an entry, as there are none at the moment. </p>`)
+    setTimeout(function () {
+      $('#display').html('')
+    }, 5000)
+  }
+
+const bb = user.days.sort(function (a, b) {
+    return b.id - a.id
+})
+
+const aa = bb.sort(function (a, b) {
+  // Turn your strings into dates, and then subtract them
+  // to get a value that is either negative, positive, or zero.
+  return new Date(b.date) - new Date(a.date)
+})
+
+
+
+
+
+
+  for (let i = 0; i < (aa.length); i++) {
+
+
+    const userHtml = (`
+
+      <div class="col-sm-4 col-lg-3 box">
+    <p>
+          ID: ${aa[i].id}
+          <br>
+        Date: ${aa[i].date}
+        <br>
+ Expenditure: $${aa[i].spend}.00
+
+     </p>
+
+
+
+
+
+    </div>
+    `)
+
+    $('#display').append(userHtml)
+  }
+}
 
 
 
@@ -325,6 +466,9 @@ module.exports = {
   updateDaySuccess,
   getDaySuccess,
   getAvgSuccess,
-  getDayFailure
+  getDayFailure,
+  getUserMaxToMinSuccess,
+  getUserMinToMaxSuccess,
+  getUserNewToOldSuccess
 
 }

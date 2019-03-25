@@ -45,6 +45,9 @@ $('#delete-day-form').on('submit', events.onDeleteDay)
 
 $('#spent').on('submit', events.onCreateDay)
 $('#get-user-days').on('submit', events.onGetUser)
+$('#get-max-min-btn').on('click', events.onGetUserMaxToMin)
+$('#get-min-max-btn').on('click', events.onGetUserMinToMax)
+$('#get-new-old-btn').on('click', events.onGetUserNewToOld)
 
 
 
