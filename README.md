@@ -64,6 +64,12 @@ Please create a wireframe of your planned front end.
 ```md
 https://imgur.com/a/xKVY2SB
 ```
+## Technologies Used
++ HTML
++ CSS
++ Bootstrap
++ Node.js
++ Ruby on Rails
 
 ## Timetable
 
