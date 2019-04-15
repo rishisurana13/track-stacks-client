@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <!-- <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+  </button> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">TrackStacks</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"></a>
+        </li>
+
+
+        <li>
+          <div class="dropdown dropdown" id="login-toggle">
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sign in
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">
+                <form id="sign-in-form" class="home">
+                  <input name="credentials[email]" type="email" placeholder="[ email_id ]">
+                  <br>
+                  <input name="credentials[password]" type="password" placeholder="[ password ]">
+                  <br>
+                  <input type="submit" value="[ sign_in ]">
+
+                </form>
+
+              </a>
+
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="sign-up-toggle">
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sign up
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+              <a class="dropdown-item">
+                <form id="sign-up-form" class="sign-up-form home">
+                  <input name="credentials[email]" type="email" placeholder="[ email_id ">
+                  <br>
+                  <input name="credentials[password]" type="password" placeholder="[ password ]">
+                  <br>
+                  <input name="credentials[password_confirmation]" type="password" placeholder="[ password_confirm ]">
+                  <br>
+                  <input class="btn btn-white" type="submit" value="[ sign Up ]">
+                </form>
+              </a>
+            </div>
+
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="logout-toggle">
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton sign-out" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sign-out
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="sign-out">
+                  <button class="btn btn-white">Sign out</button>
+                </form>
+
+              </a>
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="change-pw-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Change password
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="change-password-form">
+                  <input name="passwords[old]" type="password" placeholder="{old_password}" id="oldpw">
+                  <input name="passwords[new]" type="password" placeholder="{new_password}" id="newpw">
+                  <input class="btn btn-white" type="submit" value="[change_password}">
+                </form>
+
+
+
+
+
+              </a>
+
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="log-expense-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Log item
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="spent">
+                  <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
+                  <input name="day[date]" required type="date" placeholder="MM/DD/YY">
+                  <input name="day[spend]" required type="number" placeholder="Total Spent on food">
+                  <button class="btn btn-white" type="submit">Log your expense!</button>
+
+
+                </form>
+
+
+
+
+              </a>
+              <a class="dropdown-item">
+                <form id="log-meal">
+                  <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
+                  <input name="meal[date]" required type="date" placeholder="MM/DD/YY">
+                  <input name="meal[meal]" required type ="string" placeholder="description">
+                  <button class="btn btn-white" type="submit">Log your meal!</button>
+
+
+                </form>
+
+
+
+
+              </a>
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="update-entry-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Update item
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="update-day-form">
+                  <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
+                  <input name="day[id]" required type="number" placeholder="ID">
+
+                  <input name="day[date]" required type="date" placeholder="MM/DD/YY">
+                  <input name="day[spend]" required type="number" placeholder="Total Spent on food">
+                  <button class="btn btn-white" type="submit">Update your expense!</button>
+
+
+                </form>
+
+
+
+
+              </a>
+              <a class="dropdown-item">
+                <form id="update-meal-form">
+                  <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
+                  <input name="meal[id]" required type="number" placeholder="meal ID">
+
+                  <input name="meal[date]" required type="date" placeholder="MM/DD/YY">
+                  <input name="meal[meal]" required type="string" placeholder="Meal description">
+                  <button class="btn btn-white" type="submit">Update your meal!</button>
+
+
+                </form>
+
+
+
+
+              </a>
+
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+        <li>
+          <div class="dropdown dropdown" id="expense-toggle">
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              All item logs
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="get-user-days">
+                  <!-- <input name="user[id]" type="integer"    placeholder="Acc. ID number"> -->
+
+
+                  <button class="btn btn-white" type="submit" id="get-days">Expense History</button>
+                </form>
+              </a>
+              <a>
+                <a class="dropdown-item">
+                  <form id="get-user-meals">
+                    <!-- <input name="user[id]" type="integer"    placeholder="Acc. ID number"> -->
+
+
+                    <button class="btn btn-white" type="submit" id="get-meals">Meal History</button>
+                  </form>
+              </a>
+
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="get-day-form">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Get log by ID
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+
+
+                <form id="get-day-button">
+
+                  <input name="day[id]" required type="number" placeholder="expense ID number here" />
+
+
+
+                  <button class="btn btn-white" type="submit">GET EXPENSE</button>
+                </form>
+
+
+
+              </a>
+              <a class="dropdown-item">
+
+
+                <form id="get-meal">
+
+                  <input name="meal[id]" required type="number" placeholder="meal ID number here" />
+
+
+
+                  <button class="btn btn-white" type="submit">GET MEAL</button>
+                </form>
+
+
+
+              </a>
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li>
+
+
+          <div class="dropdown dropdown" id="delete-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Delete an item
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="delete-day-form">
+
+                  <input name="day[id]" required min="1" type="integer" placeholder="day ID number here" />
+                  <input class="btn btn-white" type="submit" value="delete">
+
+                </form>
+
+
+              </a>
+              <a class="dropdown-item">
+                <form id="delete-meal-form">
+
+                  <input name="meal[id]" required min="1" type="number" placeholder=" meal ID number here" />
+                  <input class="btn btn-white" type="submit" value="delete">
+
+                </form>
+
+
+              </a>
+
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+
+        </li>
+
+
+
+
+        <!-- <li>
+          <div class="dropdown dropdown" id="get-avg-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Get avg
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <button class="btn btn-white" id="get-avg-btn">
+                  Get Avg (expenses only!)
+                </button>
+
+
+
+
+
+              </a>
+
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="sort-by-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort By
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <button class="btn btn-white" id="get-max-min-btn">
+                  Max to Min
+                </button>
+                  <a class="dropdown-item">
+                <button class="btn btn-white" id="get-min-max-btn">
+                  Min to Max
+                </button>
+              </a>
+                <a class="dropdown-item" >
+                <button class="btn btn-white" id="get-new-old-btn">
+                  New - Old
+                </button>
+              </a>
+
+
+
+
+
+
+
+
+
+
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li> -->
+
+
+
+
+      </ul>
+
+
+
+
+
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
+
+
+  <h2 id="user-message" class="user-message"></h2>
+  <div id="avg"></div>
+  <div id="display"></div>
+
+
+
+
+</body>
+
+</html>
