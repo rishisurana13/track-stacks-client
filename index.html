@@ -132,7 +132,7 @@
           <div class="dropdown dropdown" id="log-expense-toggle">
 
             <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Log expense
+              Log item
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item">
@@ -149,6 +149,68 @@
 
 
               </a>
+              <a class="dropdown-item">
+                <form id="log-meal">
+                  <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
+                  <input name="meal[date]" required type="date" placeholder="MM/DD/YY">
+                  <input name="meal[meal]" required type ="string" placeholder="description">
+                  <button class="btn btn-white" type="submit">Log your meal!</button>
+
+
+                </form>
+
+
+
+
+              </a>
+
+              <div class="dropdown dropdown">
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="update-entry-toggle">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Update item
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+                <form id="update-day-form">
+                  <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
+                  <input name="day[id]" required type="number" placeholder="ID">
+
+                  <input name="day[date]" required type="date" placeholder="MM/DD/YY">
+                  <input name="day[spend]" required type="number" placeholder="Total Spent on food">
+                  <button class="btn btn-white" type="submit">Update your expense!</button>
+
+
+                </form>
+
+
+
+
+              </a>
+              <a class="dropdown-item">
+                <form id="update-meal-form">
+                  <!-- <input name="day[today]" required type="text"    placeholder="What day is it today?"> -->
+                  <input name="meal[id]" required type="number" placeholder="meal ID">
+
+                  <input name="meal[date]" required type="date" placeholder="MM/DD/YY">
+                  <input name="meal[meal]" required type="string" placeholder="Meal description">
+                  <button class="btn btn-white" type="submit">Update your meal!</button>
+
+
+                </form>
+
+
+
+
+              </a>
+
 
               <div class="dropdown dropdown">
 
@@ -158,10 +220,11 @@
           </div>
         </li>
 
+
         <li>
           <div class="dropdown dropdown" id="expense-toggle">
             <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Expenses
+              All item logs
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item">
@@ -173,9 +236,60 @@
                 </form>
               </a>
               <a>
+                <a class="dropdown-item">
+                  <form id="get-user-meals">
+                    <!-- <input name="user[id]" type="integer"    placeholder="Acc. ID number"> -->
+
+
+                    <button class="btn btn-white" type="submit" id="get-meals">Meal History</button>
+                  </form>
+              </a>
+
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown dropdown" id="get-day-form">
+
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Get log by ID
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">
+
+
+                <form id="get-day-button">
+
+                  <input name="day[id]" required type="number" placeholder="expense ID number here" />
+
+
+
+                  <button class="btn btn-white" type="submit">GET EXPENSE</button>
+                </form>
+
+
+
+              </a>
+              <a class="dropdown-item">
+
+
+                <form id="get-meal">
+
+                  <input name="meal[id]" required type="number" placeholder="meal ID number here" />
+
+
+
+                  <button class="btn btn-white" type="submit">GET MEAL</button>
+                </form>
+
+
 
               </a>
 
+              <div class="dropdown dropdown">
+
+
+              </div>
             </div>
           </div>
         </li>
@@ -186,13 +300,23 @@
           <div class="dropdown dropdown" id="delete-toggle">
 
             <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Delete a day
+              Delete an item
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item">
                 <form id="delete-day-form">
 
-                  <input name="day[id]" required min="1" type="integer" placeholder="ID number here" />
+                  <input name="day[id]" required min="1" type="integer" placeholder="day ID number here" />
+                  <input class="btn btn-white" type="submit" value="delete">
+
+                </form>
+
+
+              </a>
+              <a class="dropdown-item">
+                <form id="delete-meal-form">
+
+                  <input name="meal[id]" required min="1" type="number" placeholder=" meal ID number here" />
                   <input class="btn btn-white" type="submit" value="delete">
 
                 </form>
@@ -200,6 +324,7 @@
 
               </a>
 
+
               <div class="dropdown dropdown">
 
 
@@ -211,37 +336,8 @@
 
 
 
-        <li>
-          <div class="dropdown dropdown" id="get-day-form">
 
-            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Get Day
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item">
-
-
-                <form id="get-day">
-
-                  <input name="day[id]" required type="number" placeholder="ID number here" />
-
-
-
-                  <button class="btn btn-white" type="submit">GET</button>
-                </form>
-
-
-
-              </a>
-
-              <div class="dropdown dropdown">
-
-
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
+        <!-- <li>
           <div class="dropdown dropdown" id="get-avg-toggle">
 
             <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -250,7 +346,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item">
                 <button class="btn btn-white" id="get-avg-btn">
-                  Get Avg
+                  Get Avg (expenses only!)
                 </button>
 
 
@@ -305,7 +401,7 @@
               </div>
             </div>
           </div>
-        </li>
+        </li> -->
 
 
 
