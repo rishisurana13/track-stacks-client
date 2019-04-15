@@ -74,6 +74,20 @@ const onCreateDay = (event) => {
 
   // $('form').trigger('reset')
 }
+const onCreateMeal = (event) => {
+  event.preventDefault()
+  const form = event.target
+
+  const formData = getFormFields(form)
+
+
+  api.createMeals(formData)
+    .then(ui.createMealSuccess)
+    .catch(ui.failure)
+      $('#log-meal').trigger('reset')
+
+  // $('form').trigger('reset')
+}
 const onGetDays = function () {
   event.preventDefault()
   api.getDays()
@@ -90,6 +104,7 @@ const onGetUser = function (event) {
 
 
 }
+
 const onGetUserMaxToMin = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
@@ -132,6 +147,16 @@ const onGetDay = function (event) {
 
 
 }
+const onGetMeal = function (event) {
+  event.preventDefault()
+ const formData = getFormFields(event.target)
+
+  api.getMeal(formData.meal.id) // (formdata.user.id)
+    .then(ui.getMealSuccess)
+    .catch(ui.failure)
+
+
+}
 
 const onDeleteDay = function (event) {
   event.preventDefault()
@@ -156,6 +181,16 @@ const onUpdateDay = function (event) {
     .catch(ui.failure)
     $('#update-day-form').trigger('reset')
 }
+const onUpdateMeal = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+
+
+  api.updateMeal(formData.meal)
+    .then(ui.updateMealSuccess)
+    .catch(ui.failure)
+    $('#update-meal-form').trigger('reset')
+}
 
 
 
@@ -167,7 +202,26 @@ const onGetAvg = function (event) {
     .then(ui.getAvgSuccess)
     .catch(ui.failure)
 }
+const onGetMeals = function () {
+  event.preventDefault()
 
+
+  api.getUser(store.user.id) // (formdata.user.id)
+    .then(ui.getMealsSuccess)
+    .catch(ui.failure)
+}
+
+const onDeleteMeal = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+
+
+  api.deleteMeal(formData.meal.id)
+    .then(ui.deleteMealSuccess) // this
+    .catch(ui.failure)
+    $('#delete-meal-form').trigger('reset')
+    $('#user-message').trigger('reset')
+}
 
 
 module.exports = {
@@ -184,5 +238,11 @@ module.exports = {
   onGetAvg,
   onGetUserMaxToMin,
   onGetUserMinToMax,
-  onGetUserNewToOld
+  onGetUserNewToOld,
+  onCreateMeal,
+  onGetMeals,
+  onGetMeal,
+  onDeleteMeal,
+  onUpdateMeal
+
 }

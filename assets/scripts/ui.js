@@ -23,6 +23,7 @@ const signInSuccess = (responseData) => {
   $('#get-day-form').show('click')
   $('#get-avg-toggle').show('click')
   $('#avg').show('click')
+  $('#update-entry-toggle').show('click')
 
 
   $('#resetButton').show('click')
@@ -58,6 +59,7 @@ const signOutSuccess = (responseData) => {
   $('#get-avg-toggle').hide('click')
   $('#avg').hide('click')
   $('#avg').html(' ')
+  $('#update-entry-toggle').hide('click')
 
 
 
@@ -154,6 +156,13 @@ const createDaySuccess = (responseData) => {
   }, 2000)
 }
 
+const createMealSuccess = (responseData) => {
+  $('#user-message').text('Successfully Logged Meal, Click Get Meals!')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+}
+
 const getUserSuccess = function (responseData) {
   const user = responseData.user
   $('#display').html(' ')
@@ -236,6 +245,34 @@ Expenditure: $${day.spend}.00
   $('#display').append(userHtml)
   $('#get-day').trigger('reset')
 }
+const getMealSuccess = function (responseData) {
+  const meal = responseData.meal
+
+
+
+  $('#display').html(' ')
+
+  const userHtml = (`
+    <div class="col-sm-4 col-lg-3 box">
+  <p>
+        ID: ${meal.id}
+        <br>
+      Date: ${meal.date}
+      <br>
+      Meal: ${meal.meal}
+
+   </p>
+
+
+
+
+
+  </div>
+          `)
+
+  $('#display').append(userHtml)
+  $('#get-meal').trigger('reset')
+}
 const updateDaySuccess = function (responseData) {
   $('#user-message').html('DAY UPDATED')
   setTimeout(function () {
@@ -244,8 +281,79 @@ const updateDaySuccess = function (responseData) {
 
 
 }
+const updateMealSuccess = function (responseData) {
+  $('#user-message').html('Meal UPDATED')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+
+
+}
+
+const getMealsSuccess = function (responseData) {
+  const meals = responseData.user.meals
+  $('#display').html(' ')
+  if (meals[0] === undefined) {
+    $('#display').html(`<p> Log an entry, as there are none at the moment. </p>`)
+    setTimeout(function () {
+      $('#display').html('')
+    }, 5000)
+  }
+
+const bb = meals.sort(function (a, b) {
+    return b.id - a.id
+})
+
+const aa = bb.sort(function (a, b) {
+  // Turn your strings into dates, and then subtract them
+  // to get a value that is either negative, positive, or zero.
+  return new Date(a.date) - new Date(b.date)
+})
+
+
+
+
+
+
+  for (let i = 0; i < (aa.length); i++) {
+
+
+    const userHtml = (`
+
+      <div class="col-sm-4 col-lg-3 box">
+    <p>
+          ID: ${aa[i].id}
+          <br>
+        Date: ${aa[i].date}
+        <br>
+        Meal: ${aa[i].meal}
+
+     </p>
+
+
+
+
+
+    </div>
+    `)
+
+    $('#display').append(userHtml)
+  }
+}
+
+
 
 const deleteDaySuccess = function (responseData) {
+
+  $('#user-message').html('ENTRY DELETED')
+  setTimeout(function () {
+    $('#user-message').text('')
+  }, 2000)
+
+
+
+}
+const deleteMealSuccess = function (responseData) {
 
   $('#user-message').html('ENTRY DELETED')
   setTimeout(function () {
@@ -469,6 +577,11 @@ module.exports = {
   getDayFailure,
   getUserMaxToMinSuccess,
   getUserMinToMaxSuccess,
-  getUserNewToOldSuccess
+  getUserNewToOldSuccess,
+  createMealSuccess,
+  getMealsSuccess,
+  getMealSuccess,
+  deleteMealSuccess,
+  updateMealSuccess
 
 }
